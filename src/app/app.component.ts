@@ -10,45 +10,56 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  userEmail: string;
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Dashboard',
+      url: 'dashboard',
+      icon: 'home'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Monitoring Arus',
+      url: 'arus',
+      icon: 'bar-chart'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Monitoring Tegangan',
+      url: 'tegangan',
+      icon: 'bar-chart'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Monitoring CosPhi',
+      url: 'cosphi',
+      icon: 'bar-chart'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Monitoring Daya',
+      url: 'daya',
+      icon: 'bar-chart'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Kontrol Sensor',
+      url: 'kontrolsensor',
+      icon: 'settings'
+    },
+    {
+      title: 'Rekapitulasi Data',
+      url: 'rekapitulasi',
+      icon: 'documents'
+    },
+    {
+      title: 'Keluar',
+      url: 'logout',
+      icon: 'exit'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    
   ) {
     this.initializeApp();
   }
@@ -61,9 +72,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    }
+  
   }
 }
