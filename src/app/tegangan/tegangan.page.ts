@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tegangan',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeganganPage implements OnInit {
 
-  constructor() { }
+price: any = '';
+
+  constructor(
+  private route: ActivatedRoute
+  ) { 
+  this.price = this.route.snapshot.params['price'];
+  }
 
   ngOnInit() {
   }

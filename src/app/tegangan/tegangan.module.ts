@@ -8,8 +8,6 @@ import { TeganganPageRoutingModule } from './tegangan-routing.module';
 
 import { TeganganPage } from './tegangan.page';
 
-import { HighchartsChartComponent } from 'highcharts-angular';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,8 +16,7 @@ import { HighchartsChartComponent } from 'highcharts-angular';
     TeganganPageRoutingModule
 
   ],
-  declarations: [TeganganPage,
-  HighchartsChartComponent
+  declarations: [TeganganPage
   ]
 })
 export class TeganganPageModule {}

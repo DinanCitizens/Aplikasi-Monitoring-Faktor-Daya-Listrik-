@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "790155383412",
+    "firebase_url": "https://koneksi-firebase-auth-ke-ionic.firebaseio.com",
+    "project_id": "koneksi-firebase-auth-ke-ionic",
+    "storage_bucket": "koneksi-firebase-auth-ke-ionic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790155383412:android:acd8823614ff0191bfb721",
+        "android_client_info": {
+          "package_name": "com.company.mysidemenu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790155383412-cst5bngjehk48ckr47on2d9a77sap7ih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuuCGzsNFUqE9sD4YDbJyuLqlGNFB0kmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790155383412-cst5bngjehk48ckr47on2d9a77sap7ih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
