@@ -41,7 +41,7 @@ export class AppComponent {
       icon: 'bar-chart'
     },
     {
-      title: 'Kontrol Sensor',
+      title: 'Kontrol',
       url: 'kontrolsensor',
       icon: 'settings'
     },

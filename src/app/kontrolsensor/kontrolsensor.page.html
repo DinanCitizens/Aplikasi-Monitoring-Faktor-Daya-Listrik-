@@ -1,9 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>kontrolsensor</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Kontrol</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+	<ion-list>
+		<ion-item lines="full">
+			<ion-icon slot="start" name="moon">
+			</ion-icon>
+			<ion-label>
+				Dark Mode
+			</ion-label>
+			<ion-toggle id="themeToggle" slot="end">
+			</ion-toggle>
+		</ion-item>
+			
+		<ion-item lines="full">
+			<ion-icon slot="start" name="settings"></ion-icon>
+			<ion-label>
+				Sensor Tegangan
+			</ion-label>
+			<ion-toggle id="themeToggle" slot="end">
+			</ion-toggle>
+		</ion-item>
+
+		<ion-item lines="full">
+			<ion-icon slot="start" name="settings"></ion-icon>
+			<ion-label>
+				Sensor Arus
+			</ion-label>
+			<ion-toggle id="themeToggle" slot="end">
+			</ion-toggle>
+		</ion-item>
+		
+	</ion-list>
 
 </ion-content>
