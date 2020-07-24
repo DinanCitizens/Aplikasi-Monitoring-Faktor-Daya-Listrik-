@@ -40,7 +40,31 @@ const routes: Routes = [
   },
   {
     path: 'logout',
-    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'arusr',
+    loadChildren: () => import('./arusr/arusr.module').then( m => m.ArusrPageModule)
+  },
+  {
+    path: 'aruss',
+    loadChildren: () => import('./aruss/aruss.module').then( m => m.ArussPageModule)
+  },
+  {
+    path: 'arust',
+    loadChildren: () => import('./arust/arust.module').then( m => m.ArustPageModule)
+  },
+  {
+    path: 'teganganr',
+    loadChildren: () => import('./teganganr/teganganr.module').then( m => m.TeganganrPageModule)
+  },
+  {
+    path: 'tegangans',
+    loadChildren: () => import('./tegangans/tegangans.module').then( m => m.TegangansPageModule)
+  },
+  {
+    path: 'tegangant',
+    loadChildren: () => import('./tegangant/tegangant.module').then( m => m.TegangantPageModule)
   }
   
   

@@ -1,12 +1,20 @@
 <ion-header>
-  <ion-toolbar color="primary">
-      <ion-title>Arus</ion-title>
+  <ion-toolbar class="toolbar">
+      <ion-title class="title">Arus</ion-title>
+
+      <ion-buttons slot="start">
+       <ion-menu-button menu="main-menu" class="icon"></ion-menu-button>
+    </ion-buttons>
+    
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-	<figure class="highcharts-figure">	
-		<div id="container"></div>
-	</figure>
+	
+	
+<ion-button  class="buttonr" size="default" shape="round" expand="block" (click)="goToArusRPage()">R</ion-button>
+<ion-button  class="buttons" size="default" shape="round" expand="block" (click)="goToArusSPage()">s</ion-button>
+<ion-button  class="buttont" size="default" shape="round" expand="block" (click)="goToArusTPage()">T</ion-button>	
+
 
 </ion-content>

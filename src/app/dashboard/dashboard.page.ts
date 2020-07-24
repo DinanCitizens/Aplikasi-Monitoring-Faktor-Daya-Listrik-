@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { NavController, ModalController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import {  MenuController } from '@ionic/angular';
 
 
@@ -33,17 +33,6 @@ export class DashboardPage implements OnInit {
       this.navCtrl.navigateBack('');
     }
 
-  }
-
-  logout(){
-    this.authService.logoutUser()
-    .then(res => {
-      console.log(res);
-      this.navCtrl.navigateBack('');
-    })
-    .catch(error => {
-      console.log(error);
-    })
   }
 
 }

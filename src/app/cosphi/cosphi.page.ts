@@ -10,10 +10,14 @@ import * as HighCharts from 'highcharts';
 })
 export class CosphiPage {
 
-  constructor(public navCtrl: NavController) { }
+  data : any;
+
+  constructor(
+  public navCtrl: NavController,
+  ) {}
 
 ionViewDidEnter(){
-  var myChart = HighCharts.chart('container', {
+   var myChart = HighCharts.chart('container', {
     chart: {
       type: 'spline',
       
@@ -35,7 +39,7 @@ ionViewDidEnter(){
   },
 
   title: {
-    text: 'Live Monitoring CosPhi'
+    text: 'Live Monitoring Faktor Daya'
   },
 
   accessibility:{
@@ -58,7 +62,7 @@ ionViewDidEnter(){
 
   yAxis: {
     title: {
-      text: 'Phi'
+      text: 'Cosphi'
     },
     plotLines: [{
       value: 0,
@@ -81,7 +85,7 @@ ionViewDidEnter(){
   },
 
   series: [{
-    name: 'Random data',
+    name: 'R',
     type: undefined,
     data: (function () {
       var data = [],
@@ -95,7 +99,7 @@ ionViewDidEnter(){
       }
       return data;
     }())
-  }]
+  }] 
 });
 
 }

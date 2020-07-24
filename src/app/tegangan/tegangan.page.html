@@ -1,13 +1,19 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Tegangan</ion-title>
+  <ion-toolbar class="toolbar">
+    <ion-title class="title">Tegangan</ion-title>
+
+    <ion-buttons slot="start">
+       <ion-menu-button menu="main-menu" class="icon"></ion-menu-button>
+    </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-      <figure class="highcharts-figure">  
-      <div id="container"></div>
-      </figure>
+      <ion-button  class="butonr" size="default" shape="round" expand="block" (click)="goToTeganganRPage()">R</ion-button>
+	  <ion-button  class="butons" size="default" shape="round" expand="block" (click)="goToTeganganSPage()">s</ion-button>
+	  <ion-button  class="butont" size="default" shape="round" expand="block" (click)="goToTeganganTPage()">T</ion-button>	
+
 
 </ion-content>

@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Rekapitulasi</ion-title>
+
+    <ion-buttons slot="start">
+       <ion-menu-button menu="main-menu" class="icon"></ion-menu-button>
+    </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item>
+  	<h1>Masukkan Tanggal :</h1>
+  		<ion-label position="floating">Pilih Tanggal:</ion-label>
+  	<ion-row>
+  		<ion-input [(ngModel)]="selectedDate" (click)="SelectDate()" type="text"></ion-input>	
+  	</ion-row>
 
+  </ion-item>
+  	<div class="tombol">
+  		<ion-button color="primary" (click)="Download()">
+    	Download
+ 	 	</ion-button>
+  	</div>
 </ion-content>

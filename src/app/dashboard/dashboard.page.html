@@ -1,28 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Dashboard</ion-title>
+  <ion-toolbar class="tolbar">
+    <ion-title class="huruf">Beranda</ion-title>
+
+    <ion-buttons slot="start">
+       <ion-menu-button menu="main-menu" class="icon"></ion-menu-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
-<ion-grid>
+<ion-content>
     <ion-row>
-      <ion-col text-center>
+      <ion-col>
         Welcome to Dashboard!
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col text-center>
+      <ion-col>
         Your Registered EmailID : {{userEmail}}
       </ion-col>
-    </ion-row>
-  </ion-grid>  	
+    </ion-row>  	
 
 </ion-content>
-<ion-footer (click)="logout()">
-  <ion-toolbar color="secondary">
-    <ion-title>Log out</ion-title>
-  </ion-toolbar>
-</ion-footer>
 

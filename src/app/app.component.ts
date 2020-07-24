@@ -1,71 +1,45 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
-
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthenticationService } from './services/authentication.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
-  public appPages = [
-    {
-      title: 'Dashboard',
-      url: 'dashboard',
-      icon: 'home'
-    },
-    {
-      title: 'Monitoring Arus',
-      url: 'arus',
-      icon: 'bar-chart'
-    },
-    {
-      title: 'Monitoring Tegangan',
-      url: 'tegangan',
-      icon: 'bar-chart'
-    },
-    {
-      title: 'Monitoring CosPhi',
-      url: 'cosphi',
-      icon: 'bar-chart'
-    },
-    {
-      title: 'Monitoring Daya',
-      url: 'daya',
-      icon: 'bar-chart'
-    },
-    {
-      title: 'Kontrol',
-      url: 'kontrolsensor',
-      icon: 'settings'
-    },
-    {
-      title: 'Rekapitulasi Data',
-      url: 'rekapitulasi',
-      icon: 'documents'
-    },
-    {
-      title: 'Keluar',
-      url: 'logout',
-      icon: 'exit'
-    }
-  ];
-  
+  rootPage:any
+  userEmail: string;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private fcm: FCM,
-    private router: Router  
+    private router: Router,
+    private afAuth: AngularFireAuth,
+    private navCtrl: NavController,
+    private authService: AuthenticationService
   ) {
   this.initializeApp();
+
+  this.afAuth.authState.subscribe(user => {
+    if (!user || !user.emailVerified) {
+    this.rootPage = 'LoginPage'
+    }
+    else {
+    this.rootPage = 'DashboardPage'
+    }
+  })
   }
+  
   initializeApp(){
   this.platform.ready().then(() => {
   this.statusBar.styleDefault();
@@ -95,6 +69,17 @@ export class AppComponent {
   this.fcm.unsubscribeFromTopic('marketing');
 });
 }
+
+ngOnInit() {
+
+  if(this.authService.userDetails()){
+      this.userEmail = this.authService.userDetails().email;
+    }else{
+      this.navCtrl.navigateBack('');
+    }
+
+  }
+
 }
 
 
