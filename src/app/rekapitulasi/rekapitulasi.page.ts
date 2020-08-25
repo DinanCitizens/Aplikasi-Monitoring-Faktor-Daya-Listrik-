@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Downloader, DownloadRequest, NotificationVisibility } from '@ionic-native/downloader/ngx';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { DatePipe } from '@angular/common';
 import { Platform } from '@ionic/angular';
+import * as papa from 'papaparse';
 
 @Component({
   selector: 'app-rekapitulasi',
@@ -17,7 +19,7 @@ selectedDate: string="";
 
   constructor( 
   private http: HttpClient,
-  public fb: FormBuilder,
+  public navCtrl: NavController,
   private downloader: Downloader,
   public datePicker: DatePicker,
   public datePipe: DatePipe,
@@ -27,7 +29,6 @@ selectedDate: string="";
       this.selectedDate = this.datePipe.transform(new Date(),"dd-MM-yyyy");
     })
   }
-
   
   Download(){
     var downloadurl="https://api.thingspeak.com/channels/1092085/feeds.json?api_key=YJQJLM4J0A3IP1QU&results=2";

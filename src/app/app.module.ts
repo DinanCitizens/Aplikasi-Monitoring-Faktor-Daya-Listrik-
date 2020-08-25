@@ -23,8 +23,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FCM } from '@ionic-native/fcm/ngx';
+
 import * as firebase from 'firebase';
 firebase.initializeApp(environment.firebase);
+import 'chartjs-plugin-zoom';
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,6 +47,8 @@ firebase.initializeApp(environment.firebase);
     ApiService,
     FCM,
     HTTP,
+    HttpClientModule,
+    HttpClient,
     Downloader,
     DatePicker,
     DatePipe,

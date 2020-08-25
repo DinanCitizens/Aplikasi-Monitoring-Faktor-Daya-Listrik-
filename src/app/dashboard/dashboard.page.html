@@ -1,25 +1,19 @@
-<ion-header>
-  <ion-toolbar class="tolbar">
-    <ion-title class="huruf">Beranda</ion-title>
-
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
        <ion-menu-button menu="main-menu" class="icon"></ion-menu-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-row>
-      <ion-col>
-        Welcome to Dashboard!
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        Your Registered EmailID : {{userEmail}}
-      </ion-col>
-    </ion-row>  	
+    <ion-card class="card">
+      <ion-item>
+        <ion-label class="item">
+          Halo, {{userEmail}}
+        </ion-label>
+      </ion-item>
+    </ion-card>
 
 </ion-content>
 
