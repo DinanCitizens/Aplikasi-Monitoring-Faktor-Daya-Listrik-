@@ -50,6 +50,7 @@
     "firebase": "^7.11.0",
     "highcharts": "^8.0.4",
     "highcharts-angular": "^2.4.0",
+    "http-module": "0.0.5",
     "integrator-cordova-plugin-downloader": "^1.1.0",
     "ionic-mqtt": "^1.1.5",
     "jquery": "^3.5.1",

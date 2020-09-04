@@ -14,6 +14,8 @@ export class ArussPage {
 
   chart: any;
   datatanggal: any = [];
+  datanilai: any = [];
+
 
   constructor(
   public navCtrl: NavController,
@@ -28,7 +30,7 @@ goToArusPage(){
     }
 
 getConfigResponse():Promise<any> {
-  return this.http.get('https://api.thingspeak.com/channels/1092085/feeds.json?api_key=YJQJLM4J0A3IP1QU').toPromise();
+  return this.http.get('https://api.thingspeak.com/channels/1092085/feeds.json?api_key=YJQJLM4J0A3IP1QU&results=10').toPromise();
 }
 
 ionViewDidEnter() {
@@ -38,22 +40,15 @@ ionViewDidEnter() {
 
       marginRight: 10,
       events: {
-        load: () => {
-          this.getConfigResponse().then(data => {
-            data.feeds.map(feed => {
-              console.log(feed);
-
-            this.datatanggal.push(feed.created_at)
-
-              var x = (new Date(feed.created_at)).getTime(),
-              y = feed.field1;
-              this.chart.series[0].addPoint([x, y], true, true);
-            })
-          });
-
+        load: function(){
+          var series = this.series[0];
+          setInterval(function () {
+            var x = (new Date()).getTime(),
+              y = Math.random();
+            series.addPoint([x, y], true, true);
+          }, 1000);
         }
-    },
-
+      }
   },
 
   time: {
@@ -77,10 +72,10 @@ ionViewDidEnter() {
     }
   },
 
-  // xAxis: {
-   // type: 'datetime',
-    // tickPixelInterval: 150
-  // },
+  xAxis: {
+   type: 'datetime',
+     tickPixelInterval: 150
+   },
 
   yAxis: {
     title: {
@@ -104,19 +99,19 @@ ionViewDidEnter() {
 
   series: [{
     name: 'Random data',
-    type: undefined
-    // data: (function () {
-      // var data = [],
-        // time = (new Date()).getTime(),i;
+    type: undefined,
+     data: function () {
+       var data = [],
+         time = (new Date()).getTime(),i;
 
-      // for (i = -19; i <= 0; i +=1){
-        // data.push({
-          // x: time + i * 15000,
-          // y: Math.random()
-        // });
-      // }
-      // return data;
-    // }())
+       for (i = -19; i <= 0; i +=1){
+        data.push({
+           x: time + i * 15000,
+           y: Math.random()
+         });
+       }
+       return data;
+     }()
   }]
 });
 

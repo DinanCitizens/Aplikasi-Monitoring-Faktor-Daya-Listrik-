@@ -10,17 +10,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <h1>Masukkan Tanggal :</h1>
-      <ion-label position="floating">Pilih Tanggal:</ion-label>
-        <ion-row>
-          <ion-input [(ngModel)]="selectedDate" (click)="selectedDate()" type="text"></ion-input>
-        </ion-row>
-      </ion-item>
-      <div class="tombol">
-        <ion-button color="primary" (click)="Download()">
-          Download
-        </ion-button>
-      </div>
+  <ion-card>
+    <ion-item>
+      <ion-label>Pilih Tanggal</ion-label>
+      <ion-datetime></ion-datetime>
+    </ion-item>
+</ion-card>
     
 </ion-content>

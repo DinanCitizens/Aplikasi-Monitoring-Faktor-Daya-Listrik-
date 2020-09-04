@@ -16,6 +16,8 @@ import * as papa from 'papaparse';
 export class RekapitulasiPage {
 
 selectedDate: string="";
+csvData: any[] = [];
+headerRow: any[] = [];
 
   constructor( 
   private http: HttpClient,
@@ -28,40 +30,50 @@ selectedDate: string="";
     this.platform.ready().then(()=> {
       this.selectedDate = this.datePipe.transform(new Date(),"dd-MM-yyyy");
     })
+    // this.readCsvData();
   }
+
+  // private readCsvData() {
+  //   this.http.get('https://api.thingspeak.com/channels/1092085/feeds.json?api_key=YJQJLM4J0A3IP1QU&results=10')
+  //     .subscribe(
+  //     data => this.extractData(data),
+  //     err => this.handleError(err)
+  //     );
+  // }
+
+  // private extractData(res) {
+  //   let csvData = res['_body'] || '';
+  //   let parsedData = papa.parse(csvData).data;
+ 
+  //   this.headerRow = parsedData[0];
+ 
+  //   parsedData.splice(0, 1);
+  //   this.csvData = parsedData;
+  // }
+ 
+  // downloadCSV() {
+  //   let csv = papa.unparse({
+  //     fields: this.headerRow,
+  //     data: this.csvData
+  //   });
+ 
+  //   // Dummy implementation for Desktop download purpose
+  //   var blob = new Blob([csv]);
+  //   var a = window.document.createElement("a");
+  //   a.href = window.URL.createObjectURL(blob);
+  //   a.download = "newdata.csv";
+  //   document.body.appendChild(a);
+  //   a.click();
+  //   document.body.removeChild(a);
+  // }
+ 
+  // private handleError(err) {
+  //   console.log('something went wrong: ', err);
+  // }
+ 
+  // trackByFn(index: any, item: any) {
+  //   return index;
+  // }
+
   
-  Download(){
-    var downloadurl="https://api.thingspeak.com/channels/1092085/feeds.json?api_key=YJQJLM4J0A3IP1QU&results=2";
-
-    var request:DownloadRequest={
-      uri:downloadurl,
-      title:"Download",
-      description: "Nyoba Download",
-      mimeType: "user/txt",
-      visibleInDownloadsUi:true,
-      notificationVisibility:NotificationVisibility.
-      VisibleNotifyCompleted,
-      destinationInExternalFilesDir:{
-        dirType: 'Downloads',
-        subPath: 'MyFile.csv'
-      }
-    };
-    this.downloader.download(request).then((location:string)=>{
-      alert("File downloaded at:"+location)
-
-      },(err)=>{
-        alert(JSON.stringify(err));
-      })
-      }
-
-  SelectDate(){
-    var options={
-      date: new Date(),
-      mode:'date',
-      androidTheme:this.datePicker.ANDROID_THEMES. THEME_TRADITIONAL
-    }
-    this.datePicker.show(options).then((date)=>{
-      this.selectedDate = this.datePipe.transform(date,"dd-MM-yyyy");
-    })
-  }
   }

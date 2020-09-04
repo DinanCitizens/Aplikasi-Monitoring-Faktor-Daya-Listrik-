@@ -26,7 +26,6 @@ import { FCM } from '@ionic-native/fcm/ngx';
 
 import * as firebase from 'firebase';
 firebase.initializeApp(environment.firebase);
-import 'chartjs-plugin-zoom';
 
 @NgModule({
   declarations: [AppComponent],
