@@ -62,7 +62,7 @@ ionViewDidEnter() {
     },
 
     title: {
-      text: 'Live Monitoring Arus S'
+      text: 'Live Monitoring Arus R'
     },
 
     // accessibility:{
@@ -104,7 +104,7 @@ ionViewDidEnter() {
     },
 
     series: [{
-      name: 'Random data',
+      name: 'Arus R',
       type: undefined,
       data: []
     }]

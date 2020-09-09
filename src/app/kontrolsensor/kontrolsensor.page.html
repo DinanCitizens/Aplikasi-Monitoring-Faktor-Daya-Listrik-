@@ -11,19 +11,24 @@
 
 <ion-content>
 
-	<ion-list>
+	<ion-card>
 		<ion-item>
 			<ion-label>
 				Sensor Tegangan
 			</ion-label>
-				<ion-toggle [ngModel]="relais_1 | async" (ngModelChange)="changeRelais_1($event)"></ion-toggle>
+
+			<ion-toggle [(ngModel)]="statusTegangan" (ionChange)="aktivasiTegangan(statusTegangan)"></ion-toggle>
+				
 		</ion-item>
-		<ion-item>
+	</ion-card>
+		<ion-card>
+			<ion-item>
 			<ion-label>
 				Sensor Arus
 			</ion-label>
-				<ion-toggle color="primary"></ion-toggle>
+
+			<ion-toggle  [(ngModel)]="statusArus" (ionChange)="aktivasiArus(statusArus)"></ion-toggle>
 		</ion-item>
-	</ion-list>
+	</ion-card>
 
 </ion-content>
