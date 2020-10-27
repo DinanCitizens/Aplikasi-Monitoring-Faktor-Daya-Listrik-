@@ -55,6 +55,7 @@
     "ionic-mqtt": "^1.1.5",
     "jquery": "^3.5.1",
     "ng2-charts": "^2.3.2",
+    "ngx-csv-parser": "0.0.6",
     "ngx-highlightjs": "^4.1.0-beta",
     "papaparse": "^5.2.0",
     "rxjs": "~6.5.1",

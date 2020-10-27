@@ -1,70 +1,78 @@
-.beranda{
+.icon-beranda{
 	--ionicon-stroke-width: 32px;
 	color: #6200EE;
 	font-size: 14px;
 }
-.b{
+.label-beranda{
 	--color: #6200EE;
 	font-size: 12px;
 }
 
-.a{
+.icon-arus{
 	--ionicon-stroke-width: 32px;
-	color: #212121;
+	color:  #6200EE;
 	font-size: 14px;
 	
 }
-.ar{
-	--color: #212121;
+.label-arus{
+	--color:  #6200EE;
 	font-size: 12px;
 	
 }
-
-
-.t{
+.icon-tegangan{
 	--ionicon-stroke-width: 32px;
-	color: #023273;
+	color:  #6200EE;
 	font-size: 14px;
 }
-.te{
-	--color: #023273;
+.label-tegangan{
+	--color:  #6200EE;
+	font-size: 12px;
+}
+.icon-cosphi{
+	--ionicon-stroke-width: 32px;
+	font-size: 14px;
+	color: #6200EE;
+}
+.label-cosphi{
+	font-size: 12px;
+	--color:  #6200EE;
+}
+
+.icon-daya{
+	--ionicon-stroke-width: 32px;
+	color:  #6200EE;
+	font-size: 14px;
+}
+.label-daya{
+	--color:   #6200EE;
 	font-size: 12px;
 }
 
-.d{
+.icon-kontrol{
 	--ionicon-stroke-width: 32px;
-	color: #9C27B0;
+	color:  #6200EE;
 	font-size: 14px;
 }
-.sor{
-	--color:  #9C27B0;
+.label-kontrol{
+	--color:  #6200EE;
 	font-size: 12px;
 }
 
-.k{
+.icon-rekap{
 	--ionicon-stroke-width: 32px;
-	color: #18FFFF;
 	font-size: 14px;
+	color: #6200EE;
 }
-.sen{
-	--color: #18FFFF;
+.label-rekap{
 	font-size: 12px;
+	--color:  #6200EE;
 }
-.cos{
+.icon-keluar{
+	--ionicon-stroke-width: 32px;
 	font-size: 14px;
+	color: #6200EE;
 }
-.phi{
+.label-keluar{
 	font-size: 12px;
-}
-.rekap{
-	font-size: 14px;
-}
-.data{
-	font-size: 12px;
-}
-.ke{
-	font-size: 14px;
-}
-.luar{
-	font-size: 12px;
+	--color:  #6200EE;
 }

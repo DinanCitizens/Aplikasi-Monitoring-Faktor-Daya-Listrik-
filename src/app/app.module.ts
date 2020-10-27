@@ -17,6 +17,7 @@ import { DatePipe } from '@angular/common';
 
 import { AuthenticationService } from './services/authentication.service';
 import { ApiService } from './services/api.service';
+import { AppService } from './services/app.service';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
