@@ -2,10 +2,9 @@ import { Component, NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/cor
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
 import { Platform } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
-import { AppService } from '../services/app.service';
+import { Downloader, DownloadRequest, NotificationVisibility } from '@ionic-native/downloader/ngx';
 
 @Component({
   selector: 'app-rekapitulasi',
@@ -14,21 +13,17 @@ import { AppService } from '../services/app.service';
 })
 export class RekapitulasiPage {
 
-selectedDate: string="";
-chart: any;
 datafield: any;
 
   constructor( 
   private http: HttpClient,
+  private downloader: Downloader,
   public navCtrl: NavController,
-  public datePipe: DatePipe,
   public platform: Platform,
   public api: ApiService,
-  public appService: AppService
+  
+
   ) {
-    this.platform.ready().then(()=> {
-      this.selectedDate = this.datePipe.transform(new Date(),"dd-MM-yyyy");
-    })
     this.getDataField();
   }
   async getDataField(){
@@ -41,27 +36,6 @@ datafield: any;
     });
   }
 
-   jsonData =  [
-      {
-        created_at: "Anil Singh",
-        entry_id: 33,
-        field1: 98,
-      },
-      {
-        created_at: 'Reena Singh',
-        entry_id: 28,
-        field1: 99,
-      },
-      {
-        created_at: 'Aradhya',
-        entry_id: 4,
-        field1: 99,
-      },
-    ];
-
-  download(){
-    this.appService.downloadFile(this.jsonData, 'jsontocsv');
-  }
 
 }
     
