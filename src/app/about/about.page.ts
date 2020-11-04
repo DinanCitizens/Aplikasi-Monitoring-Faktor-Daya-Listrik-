@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.page.html',
   styleUrls: ['./about.page.scss'],
 })
-export class AboutPage implements OnInit {
+export class AboutPage {
 
-  constructor() { }
+  constructor(public navCtrl: NavController,
+  public alertController: AlertController) { }
 
-  ngOnInit() {
-  }
+  goToInfoListrik(){
+    this.navCtrl.navigateForward('/infolistrik');
+    }
 
+goToInfoArus(){
+    this.navCtrl.navigateForward('/infoarus');
+    }
+
+goToInfoTegangan(){
+    this.navCtrl.navigateForward('/infotegangan');
+    }
+
+goToInfoCosphi(){
+    this.navCtrl.navigateForward('/infocosphi');
+    }
+
+goToInfoDaya(){
+    this.navCtrl.navigateForward('/infodaya');
+    }
 }
