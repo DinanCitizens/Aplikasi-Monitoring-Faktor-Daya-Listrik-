@@ -1,3 +1,6 @@
+ion-content{
+	--ion-background-color: #9575CD;
+}
 .tolbar{
 	--background: #6200EE;
 }
@@ -5,5 +8,37 @@
 	--color: #FFFFFF;
 }
 .icon{
-	--color: #FFFFFF;
+	color: #FFFFFF;
+}
+.sistem{
+	--background: #6200EE;
+	margin-top: 100px;
+	width: 80%;
+	margin-left: 30px;
+	
+	
+}
+.arus{
+	--background: #6200EE;
+	margin-top: 10px;
+	width: 80%;
+	margin-left: 30px;
+}
+.tegangan{
+	--background: #6200EE;
+	margin-top: 10px;
+	width: 80%;
+	margin-left: 30px;
+}
+.cosphi{
+	--background: #6200EE;
+	margin-top: 10px;
+	width: 80%;
+	margin-left: 30px;
+}
+.daya{
+	--background: #6200EE;
+	margin-top: 10px;
+	width: 80%;
+	margin-left: 30px;
 }
