@@ -65,6 +65,10 @@ const routes: Routes = [
   {
     path: 'tegangant',
     loadChildren: () => import('./tegangant/tegangant.module').then( m => m.TegangantPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
   }
   
   
