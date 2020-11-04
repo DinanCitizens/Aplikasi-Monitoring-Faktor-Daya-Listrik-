@@ -69,6 +69,26 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'infoarus',
+    loadChildren: () => import('./infoarus/infoarus.module').then( m => m.InfoarusPageModule)
+  },
+  {
+    path: 'infotegangan',
+    loadChildren: () => import('./infotegangan/infotegangan.module').then( m => m.InfoteganganPageModule)
+  },
+  {
+    path: 'infocosphi',
+    loadChildren: () => import('./infocosphi/infocosphi.module').then( m => m.InfocosphiPageModule)
+  },
+  {
+    path: 'infodaya',
+    loadChildren: () => import('./infodaya/infodaya.module').then( m => m.InfodayaPageModule)
+  },
+  {
+    path: 'infolistrik',
+    loadChildren: () => import('./infolistrik/infolistrik.module').then( m => m.InfolistrikPageModule)
   }
   
   
