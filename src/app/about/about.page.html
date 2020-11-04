@@ -9,7 +9,28 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content>
+
+<ion-content fullscreen>
 	
+	<section>
+		<ion-button  class="sistem" size="small" expand="block" (click)="goToInfoListrik()">Sistem 3 Phase</ion-button>
+	</section>
+
+	<section>
+		<ion-button  class="arus" size="small" expand="block" (click)="goToInfoArus()">Arus</ion-button>
+	</section>
 	
+	<section>	
+		<ion-button  class="tegangan" size="small" expand="block" (click)="goToInfoTegangan()">Tegangan</ion-button>	
+	</section>
+
+	<section>	
+		<ion-button  class="cosphi" size="small" expand="block" (click)="goToInfoCosphi()">Cosphi</ion-button>	
+	</section>
+
+	<section>	
+		<ion-button  class="daya" size="small" expand="block" (click)="goToInfoDaya()">Daya</ion-button>	
+	</section>
+
 </ion-content>
+
