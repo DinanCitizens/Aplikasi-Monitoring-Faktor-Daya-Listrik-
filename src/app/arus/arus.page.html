@@ -9,12 +9,16 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
 	
-	
-<ion-button  class="buttonr" size="default" shape="round" expand="block" (click)="goToArusRPage()">R</ion-button>
-<ion-button  class="buttons" size="default" shape="round" expand="block" (click)="goToArusSPage()">s</ion-button>
-<ion-button  class="buttont" size="default" shape="round" expand="block" (click)="goToArusTPage()">T</ion-button>	
-
+	<section>
+		<ion-button  class="buttonr" size="large" (click)="goToArusRPage()">R</ion-button>
+	</section>
+	<section>
+		<ion-button  class="buttons" size="large" (click)="goToArusSPage()">s</ion-button>
+	</section>
+	<section>
+		<ion-button  class="buttont" size="large" (click)="goToArusTPage()">T</ion-button>	
+	</section>
 
 </ion-content>
