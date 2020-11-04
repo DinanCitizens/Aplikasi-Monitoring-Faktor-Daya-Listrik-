@@ -54,6 +54,7 @@
     "integrator-cordova-plugin-downloader": "^1.1.0",
     "ionic-mqtt": "^1.1.5",
     "jquery": "^3.5.1",
+    "json2csv": "^5.0.3",
     "ng2-charts": "^2.3.2",
     "ngx-csv-parser": "0.0.6",
     "ngx-highlightjs": "^4.1.0-beta",
