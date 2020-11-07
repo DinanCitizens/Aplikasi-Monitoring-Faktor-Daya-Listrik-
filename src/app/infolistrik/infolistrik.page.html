@@ -1,16 +1,26 @@
 <ion-header>
   <ion-toolbar class="tolbar">
     <ion-title class="title">Info</ion-title>
-
-    <ion-buttons slot="start">
-    		<ion-button (click)="goToAboutPage()">
-    		<ion-icon name="arrow-back" class="icon"></ion-icon>
-			</ion-button>
+	    <ion-buttons slot="start">
+	    		<ion-button (click)="goToAboutPage()">
+	    		<ion-icon name="arrow-back" class="icon"></ion-icon>
+				</ion-button>
 		</ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+	<ion-row>
+		<h4 class="label">Sistem Listrik 3 Phase</h4>
+		<ion-row>
+	          	<img src="../../assets/icon/listrik.jpg" alt="img" height="180" width="280" class="img">
+	    </ion-row>
+	    <p class="p1">Hampir seluruh perusahaan penyedia tenaga listrik menggunakan sistem listrik 3-phase. Sistem ini diperkenalkan dan dipatenkan oleh Nikola Tesla pada tahun 1887 dan 1888.</p>
 
+		<p class="p1">Sistem ini secara umum lebih ekonomis dalam penghantaran daya listrik, dibanding dengan sistem 2-phase atau 1-phase, dengan ukuran penghantar yang sama. Dikatakan ekonomis karena sistem 3-phase dapat menghantarkan daya listrik yang lebih besar.</p>
+
+		<p class="p1">Demikian juga peralatan listrik yang besar, seperti motor-motor listrik, lebih bertenaga dengan suplai 3 phase.</p>
+
+		<p class="p1">Umumnya di Indonesia, sistem 3-phase ini lebih familiar dengan nama sistem R-S-T. karena memang umumnya menggunakan simbol R, S , T untuk tiap penghantar phasenya serta simbol N untuk penghantar netral. Netral ini berasal dari trafo step down.</p>
+	</ion-row>
 </ion-content>
