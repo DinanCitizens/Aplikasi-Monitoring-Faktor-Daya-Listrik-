@@ -27,11 +27,13 @@ import { FCM } from '@ionic-native/fcm/ngx';
 
 import * as firebase from 'firebase';
 firebase.initializeApp(environment.firebase);
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
+  FormsModule, ReactiveFormsModule,
   IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(environment.firebase),
   AngularFirestoreModule,
   AngularFireAuthModule,

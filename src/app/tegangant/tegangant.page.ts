@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import * as HighCharts from 'highcharts';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tegangant',
@@ -9,98 +10,92 @@ import * as HighCharts from 'highcharts';
 })
 export class TegangantPage {
 
+  chart: any;
+  datatanggal: any = [];
+  datanilai: any = [];
+
   constructor(
-  public navCtrl: NavController) { }
+  public navCtrl: NavController,
+  private http: HttpClient) { }
 
   goToTeganganPage(){
     this.navCtrl.navigateForward('/tegangan');
-    } 
+    }
 
- ionViewDidEnter(){
-  var myChart = HighCharts.chart('container', {
+  getConfigResponse():Promise<any> {
+  return this.http.get('https://api.thingspeak.com/channels/1092085/feeds.json?api_key=YJQJLM4J0A3IP1QU&results=10').toPromise();
+  }
+
+  async chartOnLoad() {
+  console.log(this.chart.series[0]);
+  let data = await this.getConfigResponse();
+  console.log(data.feeds);
+  this.chart.series[0].setData(data.feeds.map(feed => {
+    var x = (new Date(feed.created_at)).getTime();
+    var y = parseFloat(feed.field1);
+    return {
+      x: x,
+      y: y,
+      name: "Point",
+      color: "#EFEFEF"
+    }
+  }), true);
+  } 
+
+ ionViewDidEnter() {
+  this.chart = HighCharts.chart('container', {
     chart: {
       type: 'spline',
-      
       marginRight: 10,
       events: {
-        load: function(){
-          var series = this.series[0];
-          setInterval(function () {
-            var x = (new Date()).getTime(),
-              y = Math.random();
-            series.addPoint([x, y], true, true);
-          }, 1000);
+        load: () => {
+          setInterval(async () => {
+            await this.chartOnLoad();
+          }, 15000);
         }
-    }
-  },
-
-  time: {
-    useUTC: false
-  },
-
-  title: {
-    text: 'Live Monitoring Tegangan T'
-  },
-
-  accessibility:{
-    announceNewData: {
-      enabled: true,
-      minAnnounceInterval: 15000,
-      announcementFormatter: function (allSeries, newSeries, newPoint) {
-        if (newPoint){
-          return 'New point added. Value: ' + newPoint.y;
-        }
-        return false;
-      }
-    }
-  },
-
-  xAxis: {
-    type: 'datetime',
-    tickPixelInterval: 150
-  },
-
-  yAxis: {
-    title: {
-      text: 'Voltage'
+      },
     },
-    plotLines: [{
-      value: 0,
-      width: 1,
-      color: '#808080'
+
+    time: {
+      useUTC: false
+    },
+
+    title: {
+      text: 'Live Monitoring Tegangan T'
+    },
+
+    xAxis: {
+     type: 'datetime',
+       tickPixelInterval: 150
+     },
+
+    yAxis: {
+      title: {
+        text: 'Voltage'
+      },
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: '#808080'
+      }]
+    },
+
+    tooltip: {
+      headerFormat: '<b>{series.name}</b></br>',
+      pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
+    },
+
+    exporting: {
+      enabled: false
+    },
+
+    series: [{
+      name: 'Tegangan T',
+      type: undefined,
+      data: []
     }]
-  },
 
-  tooltip: {
-    headerFormat: '<b>{series.name}</b></br>',
-    pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
-  },
+  });
 
-  legend: {
-    enabled: false
-  },
-
-  exporting: {
-    enabled: false
-  },
-
-  series: [{
-    name: 'Random data',
-    type: undefined,
-    data: (function () {
-      var data = [],
-        time = (new Date()).getTime(),i;
-
-      for (i = -19; i <= 0; i +=1){
-        data.push({
-          x: time + i * 1000,
-          y: Math.random()
-        });
-      }
-      return data;
-    }())
-  }]
-});
-
-}
+  }
 }

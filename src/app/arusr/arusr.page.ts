@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import * as HighCharts from 'highcharts';
 import { HttpClient } from '@angular/common/http';
+import { AngularFireList } from '@angular/fire/database/interfaces';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-arusr',
@@ -13,34 +15,45 @@ export class ArusrPage{
   chart: any;
   datatanggal: any = [];
   datanilai: any = [];
-  
+  jumlah_result: any;
+
   constructor(
   public navCtrl: NavController,
-  private http: HttpClient
+  private http: HttpClient,
+  public toastCtrl: ToastController
   ) { }
 
 goToArusPage(){
     this.navCtrl.navigateForward('/arus');
     }
 
-getConfigResponse():Promise<any> {
-  return this.http.get('https://api.thingspeak.com/channels/1092085/feeds.json?api_key=YJQJLM4J0A3IP1QU&results=10').toPromise();
-}
+url:any;
+cek(evt){
+  console.log(evt);
+  this.url = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&result='+this.jumlah_result;
+  console.log(this.url);
+}    
+
+// getConfigResponse():Promise<any> {
+//   return this.http.get('https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&results=5').toPromise();
+// }
 
 async chartOnLoad() {
+  this.cek('1');
   console.log(this.chart.series[0]);
-  let data = await this.getConfigResponse();
-  console.log(data.feeds);
-  this.chart.series[0].setData(data.feeds.map(feed => {
-    var x = (new Date(feed.created_at)).getTime();
-    var y = parseFloat(feed.field1);
-    return {
-      x: x,
-      y: y,
-      name: "Point",
-      color: "#EFEFEF"
-    }
-  }), true);
+  if(this.url != undefined) {
+    console.log(this.url);
+  }
+  // this.chart.series[0].setData(data.feeds.map(feed => {
+  //   var x = (new Date(feed.created_at)).getTime();
+  //   var y = parseFloat(feed.field1);
+  //   return {
+  //     x: x,
+  //     y: y,
+  //     name: "Point",
+  //     color: "#EFEFEF"
+  //   }
+  // }), true);
 }
 
 ionViewDidEnter() {
@@ -99,5 +112,6 @@ ionViewDidEnter() {
   });
 
   }
+
 }
 
