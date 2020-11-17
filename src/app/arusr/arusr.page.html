@@ -16,14 +16,14 @@
   <ion-row align-items-end>
       <ion-col col-5>
         <ion-item>
-          <ion-input [(ngModel)]="jumlah_result" [(ngModelChange)]="cek($event.target.value)" placeholder="Masukkan Jumlah Data" maxlength="2"></ion-input>
+          <ion-input [(ngModel)]="jumlah_result" type="number" placeholder="Masukkan Jumlah Data" maxlength="2"></ion-input>
         </ion-item>
       </ion-col>
   </ion-row>
   
     <ion-row>
       <ion-col>
-        <ion-button size="small" expand="block" color="danger">Kirim</ion-button>
+        <ion-button size="small" expand="block" color="danger" [disabled]="jumlah_result == undefined" (click)="kirim()">Kirim</ion-button>
       </ion-col>
     </ion-row>
 

@@ -4,6 +4,7 @@ import * as HighCharts from 'highcharts';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireList } from '@angular/fire/database/interfaces';
 import { ToastController } from '@ionic/angular';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-arusr',
@@ -15,22 +16,30 @@ export class ArusrPage{
   chart: any;
   datatanggal: any = [];
   datanilai: any = [];
-  jumlah_result: any;
+  jumlah_result: number;
 
   constructor(
   public navCtrl: NavController,
   private http: HttpClient,
-  public toastCtrl: ToastController
-  ) { }
+  public toastCtrl: ToastController,
+  public loadingService: LoadingService,
+
+  ) {
+    this.jumlah_result = 1;
+    this.kirim();
+    this.loadingService.present({});
+  }
 
 goToArusPage(){
     this.navCtrl.navigateForward('/arus');
-    }
+}
 
 url:any;
-cek(evt){
-  console.log(evt);
-  this.url = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&result='+this.jumlah_result;
+kirim() {
+  const data = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&result='+this.jumlah_result;
+  this.http.get(data).subscribe(res => {
+    this.url = res;
+  });
   console.log(this.url);
 }    
 
@@ -39,21 +48,18 @@ cek(evt){
 // }
 
 async chartOnLoad() {
-  this.cek('1');
-  console.log(this.chart.series[0]);
   if(this.url != undefined) {
-    console.log(this.url);
+    this.chart.series[0].setData(this.url.feeds.map(feed => {
+      var x = (new Date(feed.created_at)).getTime();
+      var y = parseFloat(feed.field1);
+      return {
+        x: x,
+        y: y,
+        name: "Point",
+        color: "#EFEFEF"
+      }
+    }), true);
   }
-  // this.chart.series[0].setData(data.feeds.map(feed => {
-  //   var x = (new Date(feed.created_at)).getTime();
-  //   var y = parseFloat(feed.field1);
-  //   return {
-  //     x: x,
-  //     y: y,
-  //     name: "Point",
-  //     color: "#EFEFEF"
-  //   }
-  // }), true);
 }
 
 ionViewDidEnter() {
@@ -65,7 +71,8 @@ ionViewDidEnter() {
         load: () => {
           setInterval(async () => {
             await this.chartOnLoad();
-          }, 15000);
+          }, 1000);
+          this.loadingService.dismiss();
         }
       },
     },
