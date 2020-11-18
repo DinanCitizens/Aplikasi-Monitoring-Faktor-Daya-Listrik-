@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import * as HighCharts from 'highcharts';
 import { HttpClient } from '@angular/common/http';
-import { AngularFireList } from '@angular/fire/database/interfaces';
-import { ToastController } from '@ionic/angular';
 import { LoadingService } from '../services/loading.service';
 
 @Component({
@@ -21,7 +19,6 @@ export class ArusrPage{
   constructor(
   public navCtrl: NavController,
   private http: HttpClient,
-  public toastCtrl: ToastController,
   public loadingService: LoadingService,
 
   ) {
@@ -39,22 +36,16 @@ goToArusPage(){
 
 url:any;
 kirim() {
-<<<<<<< HEAD
-=======
   this.loadingService.present({
     duration: 2000
   });
->>>>>>> c717aff0f5ad742c2f51acc76497f856f0b53ffd
+
   const data = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&results='+this.jumlah_result;
   this.http.get(data).subscribe(res => {
     this.url = res;
   });
   console.log(this.url);
 }    
-
-// getConfigResponse():Promise<any> {
-//   return this.http.get('https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&results=5').toPromise();
-// }
 
 async chartOnLoad() {
   if(this.url != undefined) {
