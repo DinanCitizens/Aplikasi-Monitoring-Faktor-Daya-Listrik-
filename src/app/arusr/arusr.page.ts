@@ -27,7 +27,10 @@ export class ArusrPage{
   ) {
     this.jumlah_result = 1;
     this.kirim();
-    this.loadingService.present({});
+    this.loadingService.present({
+      message:'Mengambil data',
+      duration: 3000
+    });
   }
 
 goToArusPage(){
@@ -36,7 +39,10 @@ goToArusPage(){
 
 url:any;
 kirim() {
-  const data = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&result='+this.jumlah_result;
+  this.loadingService.present({
+    duration: 2000
+  });
+  const data = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&results='+this.jumlah_result;
   this.http.get(data).subscribe(res => {
     this.url = res;
   });
@@ -72,7 +78,6 @@ ionViewDidEnter() {
           setInterval(async () => {
             await this.chartOnLoad();
           }, 1000);
-          this.loadingService.dismiss();
         }
       },
     },
