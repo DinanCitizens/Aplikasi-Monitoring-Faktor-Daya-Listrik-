@@ -25,7 +25,7 @@ export class ArusrPage{
   public loadingService: LoadingService,
 
   ) {
-    this.jumlah_result = 1;
+    this.jumlah_result = 0;
     this.kirim();
     this.loadingService.present({});
   }
@@ -36,7 +36,7 @@ goToArusPage(){
 
 url:any;
 kirim() {
-  const data = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&result='+this.jumlah_result;
+  const data = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&results='+this.jumlah_result;
   this.http.get(data).subscribe(res => {
     this.url = res;
   });
