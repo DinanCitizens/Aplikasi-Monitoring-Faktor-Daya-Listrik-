@@ -1,10 +1,11 @@
 import { Component, NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import * as json2csv from 'json2csv';
 import { HttpClient } from '@angular/common/http';
-import { Platform } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
-import { Downloader, DownloadRequest, NotificationVisibility } from '@ionic-native/downloader/ngx';
+import { File } from '@ionic-native/file/ngx';
+
 
 @Component({
   selector: 'app-rekapitulasi',
@@ -13,29 +14,53 @@ import { Downloader, DownloadRequest, NotificationVisibility } from '@ionic-nati
 })
 export class RekapitulasiPage {
 
-datafield: any;
+  start: any;
+  end: any;
+  downloadLink: any;
 
-  constructor( 
-  private http: HttpClient,
-  private downloader: Downloader,
-  public navCtrl: NavController,
-  public platform: Platform,
-  public api: ApiService,
+  constructor(
+    public navCtrl: NavController,
+    public api: ApiService,
+    private file: File
+  ) {  }
+
+  async getData() {
+    let res: any = await this.api.get(this.start, this.end);
+    return res.feeds;
+  }
   
-
-  ) {
-    this.getDataField();
-  }
-  async getDataField(){
-    await this.api.getDataField().subscribe(res => {
-      console.log(res);
-      this.datafield = res.results;
-      console.log(this.datafield);
-    }, err => {
-      console.log(err);
+  async downloadRekap() {
+    let data = await this.getData(); 
+    let fields = ['created_at', 'entry_id', 'field1'];
+    let csv = json2csv.parse(data, {
+      fields, output: 'test.xlsx'
     });
-  }
+    //let blob = new Blob([csv], {type: 'text/plain'});
 
+    let dirExists = false;
+    try {
+      await this.file.checkDir(this.file.externalDataDirectory, 'csv');
+      dirExists = true; 
+    } catch(e) {
+      try {
+        await this.file.createDir(this.file.externalDataDirectory, 'csv', false);
+        dirExists = true;
+      } catch(e) {
+        console.log('Failed to create directory');
+      }
+    }
+
+    if(dirExists == true) {
+      try {
+        await this.file.createFile(this.file.externalDataDirectory, 'Rekapitulasi Data Sensor.xlsx', true);
+        await this.file.writeFile(this.file.externalDataDirectory, 'Rekapitulasi Data Sensor.xlsx', csv, {replace: false, append: true});
+        console.log('Berhasil membuat file');
+      } catch(e) {
+       console.log('Gagal membuat file'); 
+      }
+    }
+   
+  }  
 
 }
     
