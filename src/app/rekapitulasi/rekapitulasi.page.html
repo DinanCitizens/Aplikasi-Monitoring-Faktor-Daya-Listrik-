@@ -9,15 +9,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
-    <ion-item>
-      <ion-label>Pilih Tanggal</ion-label>
-      <ion-datetime displayFormat="DD / MM / YYYY" min="2015" max="2030"></ion-datetime>
-    </ion-item>
-</ion-card>
+<ion-content fullscreen>
+ 
+    <h4 class="dari">Dari</h4>
+      <ion-card>
+        <ion-input type="date" [(ngModel)]="start"></ion-input>
+      </ion-card>
 
-<ion-button click="Download()">Download
-  </ion-button>
-    
+    <h4 class="dari">Sampai</h4>
+    <ion-card>
+      <ion-input type="date" [(ngModel)]="end"></ion-input>
+    </ion-card>
+ 
+    <ion-button (click)="downloadRekap()">Download Rekap</ion-button>
+   
 </ion-content>
