@@ -7,12 +7,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+
 import { environment } from 'src/environments/environment';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Downloader } from '@ionic-native/downloader/ngx';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { DatePipe } from '@angular/common';
+import { File } from '@ionic-native/file/ngx';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 
 import { AuthenticationService } from './services/authentication.service';
@@ -54,6 +60,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     Downloader,
     DatePicker,
     DatePipe,
+    SocialSharing,
+    AndroidPermissions,
+    File,
+    FileTransfer, 
+    FileTransferObject,
+    FileOpener,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
