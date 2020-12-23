@@ -31,9 +31,9 @@ export class RekapitulasiPage {
   
   async downloadRekap() {
     let data = await this.getData(); 
-    let fields = ['created_at', 'entry_id', 'field1'];
+    let fields = ['created_at', 'entry_id', 'field1', 'field2', 'field3', 'field6'];
     let csv = json2csv.parse(data, {
-      fields, output: 'test.xlsx'
+      fields, output: 'test.csv'
     });
     //let blob = new Blob([csv], {type: 'text/plain'});
 
@@ -52,8 +52,8 @@ export class RekapitulasiPage {
 
     if(dirExists == true) {
       try {
-        await this.file.createFile(this.file.externalDataDirectory, 'Rekapitulasi Data Sensor.xlsx', true);
-        await this.file.writeFile(this.file.externalDataDirectory, 'Rekapitulasi Data Sensor.xlsx', csv, {replace: false, append: true});
+        await this.file.createFile(this.file.externalDataDirectory, 'Rekapitulasi Data Sensor.csv', true);
+        await this.file.writeFile(this.file.externalDataDirectory, 'Rekapitulasi Data Sensor.csv', csv, {replace: false, append: true});
         console.log('Berhasil membuat file');
       } catch(e) {
        console.log('Gagal membuat file'); 
