@@ -40,7 +40,7 @@ kirim() {
     duration: 2000
   });
 
-  const data = 'https://api.thingspeak.com/channels/1092085/fields/1.json?api_key=YJQJLM4J0A3IP1QU&results='+this.jumlah_result;
+  const data = 'https://api.thingspeak.com/channels/1163360/fields/2.json?api_key=6KZQ9IWS362V6KF1&results='+this.jumlah_result;
   this.http.get(data).subscribe(res => {
     this.url = res;
   });
@@ -51,7 +51,7 @@ async chartOnLoad() {
   if(this.url != undefined) {
     this.chart.series[0].setData(this.url.feeds.map(feed => {
       var x = (new Date(feed.created_at)).getTime();
-      var y = parseFloat(feed.field1);
+      var y = parseFloat(feed.field2);
       return {
         x: x,
         y: y,
