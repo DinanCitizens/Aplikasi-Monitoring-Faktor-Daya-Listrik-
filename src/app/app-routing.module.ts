@@ -31,10 +31,6 @@ const routes: Routes = [
     loadChildren: () => import('./daya/daya.module').then( m => m.DayaPageModule)
   },
   {
-    path: 'kontrolsensor',
-    loadChildren: () => import('./kontrolsensor/kontrolsensor.module').then( m => m.KontrolsensorPageModule)
-  },
-  {
     path: 'rekapitulasi',
     loadChildren: () => import('./rekapitulasi/rekapitulasi.module').then( m => m.RekapitulasiPageModule)
   },
