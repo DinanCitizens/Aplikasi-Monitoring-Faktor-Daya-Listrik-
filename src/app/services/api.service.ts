@@ -3,7 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 
-const apiUrl = "https://api.thingspeak.com/channels/1092085/feeds.json?api_key=YJQJLM4J0A3IP1QU&timezone=Asia/Jakarta";
+const apiUrl = "https://api.thingspeak.com/channels/1163360/feeds.json?api_key=6KZQ9IWS362V6KF1&timezone=Asia/Jakarta";
 
 @Injectable({
   providedIn: 'root'
