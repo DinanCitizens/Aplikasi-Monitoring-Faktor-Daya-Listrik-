@@ -1,16 +1,26 @@
-.tolbar{
+.toolbar{
 	--background: #6200EE;
 }
 .huruf{
 	--color: #FFFFFF;
+	font-weight: bold;
 }
 .icon{
-	--color: #6200EE;
+	--color: #FFFFFF;
 }
-.card{
-	margin-top: 10px;
+.rata{
+	text-align: center;
 }
-.item{
+ion-card-title{
+	color: #6200EE;
 	font-weight: bold;
-	font-size: 14px;
+}
+ion-card-content{
+	color: #6200EE;
+}
+ion-card-subtitle{
+	color: #6200EE;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-left: 15px;
 }
