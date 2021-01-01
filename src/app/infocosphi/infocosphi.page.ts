@@ -12,7 +12,7 @@ export class InfocosphiPage  {
   public alertController: AlertController) { }
 
 goToAboutPage(){
-    this.navCtrl.navigateForward('/about');
+    this.navCtrl.navigateForward('/dashboard');
     }
   
 }
