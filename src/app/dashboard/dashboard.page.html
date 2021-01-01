@@ -1,19 +1,73 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
        <ion-menu-button menu="main-menu" class="icon"></ion-menu-button>
     </ion-buttons>
+    <ion-row>
+    <ion-title class="huruf">Beranda</ion-title>
+    <ion-toggle [(ngModel)]="statuspzem" (ionChange)="aktivasipzem(statuspzem)"></ion-toggle>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-card class="card">
-      <ion-item>
-        <ion-label class="item">
-          Halo, {{userEmail}}
-        </ion-label>
-      </ion-item>
-    </ion-card>
+<ion-content fullscreen color="light">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Selamat datang,</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>{{userEmail}}</ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-subtitle>Informasi</ion-card-subtitle>
+      <ion-row>
+        <ion-col>
+          <ion-card color="light">
+            <div class="rata">
+              <img src="../../assets/icon/A.png" alt="img" height="100" width="100" (click)="goToInfoArus()">
+            </div>
+          </ion-card>
+        </ion-col>
+
+        <ion-col>
+          <ion-card color="light">
+            <div class="rata">
+              <img src="../../assets/icon/V.png" alt="img" height="100" width="100" (click)="goToInfoTegangan()">
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card color="light">
+            <div class="rata">
+              <img src="../../assets/icon/W.png" alt="img" height="100" width="100" (click)="goToInfoDaya()">
+            </div>
+          </ion-card>
+        </ion-col>
+
+        <ion-col>
+          <ion-card color="light">
+            <div class="rata">
+              <img src="../../assets/icon/Pf.png" alt="img" height="100" width="100" (click)="goToInfoCosphi()">
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card color="light">
+            <div class="rata">
+              <img src="../../assets/icon/3phase.png" alt="img" height="100" width="100" (click)="goToInfoListrik()">
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+  </ion-card>
 
 </ion-content>
 
