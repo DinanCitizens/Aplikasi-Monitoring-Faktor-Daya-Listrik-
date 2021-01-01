@@ -30,9 +30,6 @@ export class ArusrPage{
     });
   }
 
-goToArusPage(){
-    this.navCtrl.navigateForward('/arus');
-}
 
 url:any;
 kirim() {
