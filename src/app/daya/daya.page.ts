@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import * as HighCharts from 'highcharts';
@@ -9,24 +9,26 @@ import { LoadingService } from '../services/loading.service';
   templateUrl: './daya.page.html',
   styleUrls: ['./daya.page.scss'],
 })
-export class DayaPage {
+export class DayaPage implements OnInit{
 
   chart: any;
-  datatanggal: any = [];
-  datanilai: any = [];
   jumlah_result: number;
 	
 constructor( 
 	private http: HttpClient,
 	public navCtrl: NavController,
   public loadingService: LoadingService){
+  
   this.jumlah_result = 0;
-    this.kirim();
     this.loadingService.present({
       message:'Mengambil data',
       duration: 3000
       }); 
 }
+
+ngOnInit(){
+  this.kirim();
+};
 
 url:any;
 kirim() {
@@ -50,7 +52,7 @@ kirim() {
       x: x,
       y: y,
       name: "Point",
-      color: "#EFEFEF"
+      color: "#FF9100"
     }
   }), true);
   }
@@ -65,7 +67,7 @@ kirim() {
         load: () => {
           setInterval(async () => {
             await this.chartOnLoad();
-          }, 15000);
+          }, 1000);
         }
       },
     },
