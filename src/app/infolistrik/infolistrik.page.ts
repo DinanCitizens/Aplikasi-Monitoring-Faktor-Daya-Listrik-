@@ -12,7 +12,7 @@ export class InfolistrikPage {
   public alertController: AlertController) { }
 
  goToAboutPage(){
-    this.navCtrl.navigateForward('/about');
+    this.navCtrl.navigateForward('/dashboard');
     }
 
 }
