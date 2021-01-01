@@ -27,11 +27,6 @@ export class TeganganrPage {
       duration: 3000
       });
     }
-
-  goToTeganganPage(){
-    this.navCtrl.navigateForward('/tegangan');
-    }
-
     url:any;
 kirim() {
   this.loadingService.present({
