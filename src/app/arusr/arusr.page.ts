@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import * as HighCharts from 'highcharts';
 import { HttpClient } from '@angular/common/http';
@@ -9,7 +9,7 @@ import { LoadingService } from '../services/loading.service';
   templateUrl: './arusr.page.html',
   styleUrls: ['./arusr.page.scss'],
 })
-export class ArusrPage{
+export class ArusrPage implements OnInit{
 
   chart: any;
   datatanggal: any = [];
@@ -30,6 +30,13 @@ export class ArusrPage{
     });
   }
 
+  ngOnInit() {
+    
+  }
+
+goToDashboardPage(){
+    this.navCtrl.navigateForward('/dashboard');
+    }
 
 url:any;
 kirim() {
@@ -78,12 +85,12 @@ ionViewDidEnter() {
     },
 
     title: {
-      text: 'Live Monitoring Arus R'
+      text: 'Live Monitoring Arus'
     },
 
     xAxis: {
      type: 'datetime',
-       tickPixelInterval: 150
+       tickPixelInterval: 50
      },
 
     yAxis: {
@@ -98,7 +105,7 @@ ionViewDidEnter() {
     },
 
     tooltip: {
-      headerFormat: '<b>{series.name}</b></br>',
+      headerFormat: '<b>{series.name}</b><br/>',
       pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
     },
 
@@ -107,7 +114,7 @@ ionViewDidEnter() {
     },
 
     series: [{
-      name: 'Arus R',
+      name: 'Arus',
       type: undefined,
       data: []
     }]

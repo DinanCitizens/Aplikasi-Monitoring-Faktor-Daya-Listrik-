@@ -20,15 +20,20 @@ constructor(
   public loadingService: LoadingService){
   
   this.jumlah_result = 0;
-    this.loadingService.present({
+  this.kirim();
+  this.loadingService.present({
       message:'Mengambil data',
       duration: 3000
       }); 
 }
 
 ngOnInit(){
-  this.kirim();
-};
+ 
+}
+
+goToDashboardPage(){
+    this.navCtrl.navigateForward('/dashboard');
+    }
 
 url:any;
 kirim() {
@@ -82,7 +87,7 @@ kirim() {
 
     xAxis: {
      type: 'datetime',
-       tickPixelInterval: 150
+       tickPixelInterval: 50
      },
 
     yAxis: {
@@ -97,7 +102,7 @@ kirim() {
     },
 
     tooltip: {
-      headerFormat: '<b>{series.name}</b></br>',
+      headerFormat: '<b>{series.name}</b><br/>',
       pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
     },
 

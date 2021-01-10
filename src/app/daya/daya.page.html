@@ -2,8 +2,10 @@
   <ion-toolbar class="tolbar">
     <ion-title class=title>Daya</ion-title>
 
-     <ion-buttons slot="start">
-       <ion-menu-button menu="main-menu" color="light"></ion-menu-button>
+    <ion-buttons slot="start">
+        <ion-button (click)="goToDashboardPage()">
+        <ion-icon name="arrow-back-outline" class="icon"></ion-icon>
+      </ion-button>
     </ion-buttons>
     
   </ion-toolbar>

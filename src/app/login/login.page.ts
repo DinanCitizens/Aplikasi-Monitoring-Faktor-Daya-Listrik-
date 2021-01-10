@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController, MenuController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,10 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    public loadingService: LoadingService
 
-  ) { } 
+  ) {} 
   
   ionViewWillEnter() {
   this.menuCtrl.enable(false);
@@ -44,16 +46,21 @@ export class LoginPage implements OnInit {
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Please enter a valid email.' }
+      { type: 'pattern', message: 'Email tidak Valid' }
     ],
     'password': [
       { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+      { type: 'minlength', message: 'Password minimal 5 karakter' }
     ]
   };
  
  
   loginUser(value){
+    this.loadingService.present({
+    message:'Tunggu Sebentar',
+    duration: 2000
+    });
+
     this.authService.loginUser(value)
     .then(res => {
       console.log(res);

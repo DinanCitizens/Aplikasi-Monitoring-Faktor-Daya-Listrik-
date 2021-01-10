@@ -27,6 +27,11 @@ export class TeganganrPage {
       duration: 3000
       });
     }
+
+    goToDashboardPage(){
+    this.navCtrl.navigateForward('/dashboard');
+    }
+    
     url:any;
 kirim() {
   this.loadingService.present({
@@ -74,12 +79,12 @@ ionViewDidEnter() {
     },
 
     title: {
-      text: 'Live Monitoring Tegangan R'
+      text: 'Live Monitoring Tegangan'
     },
 
     xAxis: {
      type: 'datetime',
-       tickPixelInterval: 150
+       tickPixelInterval: 50
      },
 
     yAxis: {
@@ -94,7 +99,7 @@ ionViewDidEnter() {
     },
 
     tooltip: {
-      headerFormat: '<b>{series.name}</b></br>',
+      headerFormat: '<b>{series.name}</b><br/>',
       pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
     },
 
@@ -103,7 +108,7 @@ ionViewDidEnter() {
     },
 
     series: [{
-      name: 'Tegangan R',
+      name: 'Tegangan',
       type: undefined,
       data: []
     }]

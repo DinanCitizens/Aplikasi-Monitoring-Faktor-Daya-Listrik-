@@ -6,7 +6,9 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthenticationService } from './services/authentication.service';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
+import { LoadingService } from './services/loading.service';
+
 
 @Component({
   selector: 'app-root',
@@ -26,10 +28,11 @@ export class AppComponent implements OnInit{
     private router: Router,
     private afAuth: AngularFireAuth,
     private navCtrl: NavController,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private loadingService: LoadingService,
+    private alertController : AlertController
   ) {
   this.initializeApp();
-
   this.afAuth.authState.subscribe(user => {
     if (!user || !user.emailVerified) {
     this.rootPage = 'LoginPage'
@@ -39,6 +42,34 @@ export class AppComponent implements OnInit{
     }
   })
   }
+
+   goTologout(){
+   
+    this.alertController.create({
+      header: 'Apakah anda ingin keluar?',
+      buttons: [
+      {
+        text: 'ya',
+        handler: () => {
+          this.loadingService.present({
+          message:'Tunggu Sebentar',
+          duration: 2000
+          });
+          this.navCtrl.navigateForward('logout');
+          console.log('Sudah logout');
+          }
+      },
+      {
+        text: 'Batal',
+        handler: () => {
+          this.navCtrl.navigateBack('dashboard');
+          console.log('Batal logout');
+        }
+      }]
+     }).then(res => {
+       res.present();
+     });
+    }
   
   initializeApp(){
   this.platform.ready().then(() => {

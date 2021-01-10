@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { NavController, MenuController, AlertController } from '@ionic/angular';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { NavController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,32 +10,14 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class DashboardPage implements OnInit {
 
   userEmail: string;
-  relay: any;
-  relaisdoc: any;
-  statuspzem: any;
 
   constructor(
 
   private navCtrl: NavController,
   private authService: AuthenticationService,
   public menuCtrl: MenuController,
-  public alert : AlertController,
-  public db : AngularFireDatabase
 
-  ) { 
-    this.relaisdoc = this.db.list('/relay').valueChanges().subscribe( res => {
-      this.relay = res[0];
-      console.log(this.relay);
-    });
-  }
-  aktivasipzem(statuspzem){
-    console.log(this.statuspzem);
-    this.db.list('relay').update('status', {
-      isChecked: statuspzem
-    }).then(() => {
-      alert('Status Berubah');
-      console.log(this.relay);
-    })
+  ) {
   }
 
   ionViewWillEnter() {
@@ -54,19 +35,19 @@ export class DashboardPage implements OnInit {
   }
 
   goToInfoListrik(){
-    this.navCtrl.navigateForward('/infolistrik');
+    this.navCtrl.navigateForward('infolistrik');
     }
   goToInfoArus(){
-    this.navCtrl.navigateForward('/infoarus');
+    this.navCtrl.navigateForward('infoarus');
     }
   goToInfoTegangan(){
-    this.navCtrl.navigateForward('/infotegangan');
+    this.navCtrl.navigateForward('infotegangan');
     }
   goToInfoCosphi(){
-    this.navCtrl.navigateForward('/infocosphi');
+    this.navCtrl.navigateForward('infocosphi');
     }
   goToInfoDaya(){
-    this.navCtrl.navigateForward('/infodaya');
+    this.navCtrl.navigateForward('infodaya');
     }
 
 }

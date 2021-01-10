@@ -29,6 +29,10 @@ export class CosphiPage {
       }); 
   }
 
+  goToDashboardPage(){
+    this.navCtrl.navigateForward('/dashboard');
+    }
+
   url:any;
 kirim() {
   this.loadingService.present({
@@ -81,7 +85,7 @@ ionViewDidEnter() {
 
     xAxis: {
      type: 'datetime',
-       tickPixelInterval: 150
+       tickPixelInterval: 50
      },
 
     yAxis: {
@@ -96,7 +100,7 @@ ionViewDidEnter() {
     },
 
     tooltip: {
-      headerFormat: '<b>{series.name}</b></br>',
+      headerFormat: '<b>{series.name}</b><br/>',
       pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
     },
 
