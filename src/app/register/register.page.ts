@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController} from '@ionic/angular';
+import { Router } from '@angular/router';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-register',
@@ -11,17 +13,16 @@ import { NavController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
   validations_form: FormGroup;
-  errorMessage: string = '';
-  successMessage: string = '';
+  private myToast: any;
 
   validation_messages = {
    'email': [
-     { type: 'required', message: 'Email is required.' },
-     { type: 'pattern', message: 'Enter a valid email.' }
+     { type: 'required', message: 'Email harus diisi' },
+     { type: 'pattern', message: 'Masukkan email yang valid' }
    ],
    'password': [
-     { type: 'required', message: 'Password is required.' },
-     { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+     { type: 'required', message: 'Password harus diisi' },
+     { type: 'minlength', message: 'Password minimal 5 karakter' }
    ]
  };
 
@@ -29,7 +30,10 @@ export class RegisterPage implements OnInit {
 
     private navCtrl: NavController,
     private authService: AuthenticationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toast: ToastController,
+    private router: Router,
+    public loadingService: LoadingService,
 
   ) { }
 
@@ -51,18 +55,30 @@ export class RegisterPage implements OnInit {
     this.authService.registerUser(value)
      .then(res => {
        console.log(res);
-       this.errorMessage = "";
-       this.successMessage = "Your account has been created. Please log in.";
+       this.myToast = this.toast.create({
+         message: 'Berhasil mendaftar',
+         duration: 5000
+       }).then((toastData) => {
+         console.log(toastData);
+         toastData.present();
+        });
+       this.loadingService.present({
+       duration: 2000
+        });
+       this.router.navigate(['']);
      }, err => {
        console.log(err);
-       this.errorMessage = err.message;
-       this.successMessage = "";
+       this.myToast = this.toast.create({
+         message: 'Gagal mendaftar!!',
+         duration: 5000
+       }).then((toastData) => {
+         console.log(toastData);
+         toastData.present();
+       });
      })
   }
- 
-  goLoginPage(){
+
+  login(){
     this.navCtrl.navigateBack('');
-
   }
-
 }

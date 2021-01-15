@@ -6,7 +6,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthenticationService } from './services/authentication.service';
-import { NavController, AlertController } from '@ionic/angular';
+import { NavController, AlertController, ToastController } from '@ionic/angular';
 import { LoadingService } from './services/loading.service';
 
 
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit{
 
   rootPage:any
   userEmail: string;
+  private myToast: any;
 
   constructor(
     private platform: Platform,
@@ -30,7 +31,8 @@ export class AppComponent implements OnInit{
     private navCtrl: NavController,
     private authService: AuthenticationService,
     private loadingService: LoadingService,
-    private alertController : AlertController
+    private alertController : AlertController,
+    private toast: ToastController,
   ) {
   this.initializeApp();
   this.afAuth.authState.subscribe(user => {
@@ -56,8 +58,15 @@ export class AppComponent implements OnInit{
           duration: 2000
           });
           this.navCtrl.navigateForward('logout');
-          console.log('Sudah logout');
-          }
+          this.myToast = this.toast.create({
+             message: 'Logout Berhasil',
+             duration: 5000
+             }).then((toastData) => {
+                console.log(toastData);
+             toastData.present();
+             });
+         console.log('Sudah logout');
+        }
       },
       {
         text: 'Batal',
