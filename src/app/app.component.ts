@@ -96,17 +96,11 @@ export class AppComponent implements OnInit{
   this.fcm.onNotification().subscribe(data => {
   console.log(data);
   if (data.wasTapped) {
-  console.log('Receive in background');
-  this.router.navigate([data.landing_page, data.price]);
+      console.log('Receive in background');
   } else {
-  console.log('Receive in foreground');
-  this.router.navigate([data.landing_page, 
-  data.price]);
-
+      console.log('Receive in foreground');
   }
   });
-  this.fcm.subscribeToTopic('people');
-  this.fcm.unsubscribeFromTopic('marketing');
 });
 }
 

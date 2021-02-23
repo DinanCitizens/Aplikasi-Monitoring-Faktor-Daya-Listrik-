@@ -4,7 +4,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    redirectTo: 'login', pathMatch: 'full'
+  },
+  { 
+  path: 'login', 
+  loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule) 
   },
   { 
   path: 'register', 
@@ -73,10 +77,6 @@ const routes: Routes = [
   {
     path: 'infotegangan',
     loadChildren: () => import('./infotegangan/infotegangan.module').then( m => m.InfoteganganPageModule)
-  },
-  {
-    path: 'infocosphi',
-    loadChildren: () => import('./infocosphi/infocosphi.module').then( m => m.InfocosphiPageModule)
   },
   {
     path: 'infodaya',

@@ -3,6 +3,8 @@ import { NavController } from '@ionic/angular';
 import * as HighCharts from 'highcharts';
 import { HttpClient } from '@angular/common/http';
 import { LoadingService } from '../services/loading.service';
+import { FCM } from '@ionic-native/fcm/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cosphi',
@@ -19,7 +21,9 @@ export class CosphiPage {
   constructor(
   public navCtrl: NavController,
   private http: HttpClient,
-  public loadingService: LoadingService
+  public loadingService: LoadingService,
+  private fcm: FCM,
+  private router: Router,
   ) {
     this.jumlah_result = 0;
     this.kirim();
@@ -33,8 +37,9 @@ export class CosphiPage {
     this.navCtrl.navigateForward('/dashboard');
     }
 
+  // loading
   url:any;
-kirim() {
+  kirim() {
   this.loadingService.present({
     duration: 2000
   });
@@ -46,6 +51,7 @@ kirim() {
   console.log(this.url);
   }  
 
+  // Get data thingspeake
   async chartOnLoad() {
   if(this.url != undefined) {
   this.chart.series[0].setData(this.url.feeds.map(feed => {
@@ -61,6 +67,7 @@ kirim() {
   }
 }
 
+// Set Highchart
 ionViewDidEnter() {
   this.chart = HighCharts.chart('container', {
     chart: {
@@ -117,4 +124,12 @@ ionViewDidEnter() {
   });
 
   }
-}
+
+  // Notifikasi
+  url_notif = 'https://fcm.googleapis.com/fcm/send';
+
+  kirimnotif(field6){
+    
+      
+    }
+  }

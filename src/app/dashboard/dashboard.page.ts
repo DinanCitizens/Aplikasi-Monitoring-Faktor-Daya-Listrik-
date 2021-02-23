@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { NavController, MenuController } from '@ionic/angular';
+import { NavController, MenuController, Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -16,8 +17,7 @@ export class DashboardPage implements OnInit {
   private navCtrl: NavController,
   private authService: AuthenticationService,
   public menuCtrl: MenuController,
-
-  ) {
+   ) {
   }
 
   ionViewWillEnter() {
