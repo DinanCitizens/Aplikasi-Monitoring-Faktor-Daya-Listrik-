@@ -16,7 +16,6 @@ export class RekapitulasiPage {
 
   start: any;
   end: any;
-  downloadLink: any;
 
   constructor(
     public navCtrl: NavController,

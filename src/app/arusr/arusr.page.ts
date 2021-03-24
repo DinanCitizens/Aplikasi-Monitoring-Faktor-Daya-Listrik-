@@ -12,8 +12,6 @@ import { LoadingService } from '../services/loading.service';
 export class ArusrPage implements OnInit{
 
   chart: any;
-  datatanggal: any = [];
-  datanilai: any = [];
   jumlah_result: number;
 
   constructor(

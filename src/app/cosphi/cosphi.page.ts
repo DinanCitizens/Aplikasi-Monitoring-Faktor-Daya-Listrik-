@@ -14,8 +14,6 @@ import { Router } from '@angular/router';
 export class CosphiPage {
 
   chart: any;
-  datatanggal: any = [];
-  datanilai: any = [];
   jumlah_result: number;
 
   constructor(
